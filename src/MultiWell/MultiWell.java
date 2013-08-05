@@ -19,9 +19,9 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
     public static String menuName = "Hello world plugin";
     public static String tooltipDescription = "A test plugin";
-    private CMMCore core_;
-    private MMStudioMainFrame gui_;
-    private AcquisitionEngine acq_;
+    private CMMCore core;
+    private MMStudioMainFrame gui;
+    private AcquisitionEngine acq;
 
     @Override
     public void dispose() {
@@ -34,14 +34,14 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
     @Override
     public void setApp(ScriptInterface app) {
-        gui_ = (MMStudioMainFrame) app;
-        core_ = app.getMMCore();
-        acq_ = gui_.getAcquisitionEngine();
+        gui = (MMStudioMainFrame) app;
+        core = app.getMMCore();
+        acq = gui.getAcquisitionEngine();
     }
 
     @Override
     public void show() {
-     gui_.showMessage("Hello world! "); 
+     gui.showMessage("Hello world! "); 
     }
 
     @Override
