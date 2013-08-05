@@ -22,7 +22,7 @@ import org.micromanager.utils.MMScriptException;
  */
 public class MultiWell implements org.micromanager.api.MMPlugin {
 
-    public static String menuName = "Hello world plugin";
+    public static String menuName = "Multi-Well plugin";
     public static String tooltipDescription = "A test plugin";
     private CMMCore core;
     private MMStudioMainFrame gui;
@@ -50,7 +50,6 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
     @Override
     public void show() {
-        gui.showMessage("Hello world! ");
 
         PositionList pl = new PositionList();
         gui.showMessage(xyStage);
