@@ -6,6 +6,8 @@ package MultiWell;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+
 import org.micromanager.api.ScriptInterface;
 import mmcorej.CMMCore;
 import org.micromanager.MMStudioMainFrame;
@@ -50,7 +52,8 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
     @Override
     public void show() {
-
+        JFrame test= new MultiWellGui();
+        test.setVisible(true);
         PositionList pl = new PositionList();
         gui.showMessage(xyStage);
         gui.showMessage(zStage);
