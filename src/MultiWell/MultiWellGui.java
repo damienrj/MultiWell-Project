@@ -8,7 +8,7 @@ package MultiWell;
  *
  * @author ramunnoj
  */
-public class MultiWellGui extends javax.swing.JFrame {
+public class MultiWellGui extends javax.swing.JFrame  {
 
     /**
      * Creates new form MultiWellGui
