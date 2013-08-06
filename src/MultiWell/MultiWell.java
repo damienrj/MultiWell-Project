@@ -52,11 +52,12 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
     @Override
     public void show() {
+        Controller test2 = new Controller(gui, core);
+        test2.openMessage();
         JFrame test= new MultiWellGui();
         test.setVisible(true);
         PositionList pl = new PositionList();
-        gui.showMessage(xyStage);
-        gui.showMessage(zStage);
+
         MultiStagePosition msp = new MultiStagePosition(xyStage, 1.0, 1.0, zStage, 100.0);
         msp.setLabel("Test");
         msp.setProperty("Slide", "Number 1");
