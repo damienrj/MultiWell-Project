@@ -52,10 +52,12 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
     @Override
     public void show() {
-        Controller test2 = new Controller(gui, core);
-        test2.openMessage();
-        JFrame test= new MultiWellGui();
+        GuiController controller = new GuiController(gui, core);
+        controller.openMessage();
+        
+        MultiWellGui test= new MultiWellGui();
         test.setVisible(true);
+        test.setController(controller);
         PositionList pl = new PositionList();
 
         MultiStagePosition msp = new MultiStagePosition(xyStage, 1.0, 1.0, zStage, 100.0);

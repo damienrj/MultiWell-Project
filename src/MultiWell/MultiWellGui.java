@@ -9,14 +9,20 @@ package MultiWell;
  * @author ramunnoj
  */
 public class MultiWellGui extends javax.swing.JFrame  {
-
+    private GuiController controller;
+  
     /**
      * Creates new form MultiWellGui
      */
     public MultiWellGui() {
         initComponents();
+        
+        
     }
 
+    public void setController(GuiController temp){
+        controller = temp;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,7 +94,7 @@ public class MultiWellGui extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        controller.openMessage();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
