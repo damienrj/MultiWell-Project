@@ -12,14 +12,14 @@ import org.micromanager.api.AcquisitionEngine;
  *
  * @author ramunnoj
  */
-public class GuiController {
+public class WellController {
     private  MMStudioMainFrame gui;
     private  CMMCore core;
     private  AcquisitionEngine acq;
     private  String xyStage;
     private  String zStage;
 
-    public GuiController(MMStudioMainFrame guiIN, CMMCore coreIN) {
+    public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
        gui = guiIN;
        core = coreIN;
         acq = gui.getAcquisitionEngine();

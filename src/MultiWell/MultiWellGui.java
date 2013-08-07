@@ -9,7 +9,7 @@ package MultiWell;
  * @author ramunnoj
  */
 public class MultiWellGui extends javax.swing.JFrame  {
-    private GuiController controller;
+    private WellController controller;
   
     /**
      * Creates new form MultiWellGui
@@ -20,7 +20,7 @@ public class MultiWellGui extends javax.swing.JFrame  {
         
     }
 
-    public void setController(GuiController temp){
+    public void setController(WellController temp){
         controller = temp;
     }
     /**
