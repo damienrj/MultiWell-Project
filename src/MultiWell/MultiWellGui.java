@@ -35,6 +35,12 @@ public class MultiWellGui extends javax.swing.JFrame  {
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        rows = new javax.swing.JTextField();
+        cols = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        createGridButton = new javax.swing.JButton();
+        showList = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Multi-Well");
@@ -49,6 +55,11 @@ public class MultiWellGui extends javax.swing.JFrame  {
         });
 
         jButton2.setText("Second Corner");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -73,6 +84,33 @@ public class MultiWellGui extends javax.swing.JFrame  {
                 .add(20, 20, 20))
         );
 
+        rows.setText("2");
+
+        cols.setText("2");
+        cols.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colsActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("# Rows");
+
+        jLabel2.setText("# Columns");
+
+        createGridButton.setText("Create Grid");
+        createGridButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createGridButtonActionPerformed(evt);
+            }
+        });
+
+        showList.setText("Show List");
+        showList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showListActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,13 +118,40 @@ public class MultiWellGui extends javax.swing.JFrame  {
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .add(29, 29, 29)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel1))
+                    .add(layout.createSequentialGroup()
+                        .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(jLabel2))
+                    .add(createGridButton)
+                    .add(layout.createSequentialGroup()
+                        .add(6, 6, 6)
+                        .add(showList)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(138, Short.MAX_VALUE)
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel1))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                            .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(jLabel2))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(createGridButton)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(showList))
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .add(18, 18, 18))
         );
 
@@ -94,8 +159,32 @@ public class MultiWellGui extends javax.swing.JFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller.openMessage();
+        controller.setFirstBox();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        controller.setSecondBox();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void colsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_colsActionPerformed
+
+    private void createGridButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGridButtonActionPerformed
+        String str = this.rows.getText();
+        int row = Integer.parseInt(str);
+        
+        String str2 = this.cols.getText();
+        int col = Integer.parseInt(str2);
+        
+        controller.setRows(row);
+        controller.setCols(col);
+        controller.makeGrid();
+    }//GEN-LAST:event_createGridButtonActionPerformed
+
+    private void showListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showListActionPerformed
+controller.showList();
+    }//GEN-LAST:event_showListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -132,8 +221,14 @@ public class MultiWellGui extends javax.swing.JFrame  {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cols;
+    private javax.swing.JButton createGridButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField rows;
+    private javax.swing.JButton showList;
     // End of variables declaration//GEN-END:variables
 }
