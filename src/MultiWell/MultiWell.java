@@ -52,7 +52,7 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
     @Override
     public void show() {
-        GuiController controller = new GuiController(gui, core);
+        WellController controller = new WellController(gui, core);
         controller.openMessage();
         
         MultiWellGui test= new MultiWellGui();
