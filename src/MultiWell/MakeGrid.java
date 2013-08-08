@@ -33,11 +33,17 @@ public class MakeGrid {
         for (int x = 0; x <= r-1; x = x + 1) {
             for (int y = 0; y <= c-1; y = y + 1) {
                 
-                gridCorner[x][y][1] = 1;
-                gridCorner[x][y][1] = 2;
+                gridCorner[x][y][0] = x;
+                gridCorner[x][y][1] = y;
+                
+               
                 
             }
         }
 
     }
+    public double[][][] getGridCorner(){
+        return gridCorner;
+    }
+    
 }
