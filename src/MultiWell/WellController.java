@@ -117,4 +117,9 @@ public class WellController {
 
 
     }
+    
+    public void loadTemplate(){
+        GridTemplate grid = new GridTemplate();
+        grid.loadTemplete();
+    }
 }

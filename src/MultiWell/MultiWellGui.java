@@ -41,6 +41,7 @@ public class MultiWellGui extends javax.swing.JFrame  {
         jLabel2 = new javax.swing.JLabel();
         createGridButton = new javax.swing.JButton();
         showList = new javax.swing.JButton();
+        loadTemplate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Multi-Well");
@@ -111,6 +112,13 @@ public class MultiWellGui extends javax.swing.JFrame  {
             }
         });
 
+        loadTemplate.setText("Load Template");
+        loadTemplate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loadTemplateActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,14 +139,19 @@ public class MultiWellGui extends javax.swing.JFrame  {
                     .add(createGridButton)
                     .add(layout.createSequentialGroup()
                         .add(6, 6, 6)
-                        .add(showList)))
-                .addContainerGap(109, Short.MAX_VALUE))
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(loadTemplate)
+                            .add(showList))))
+                .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .addContainerGap(136, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                    .add(layout.createSequentialGroup()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(18, 18, 18))
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +163,9 @@ public class MultiWellGui extends javax.swing.JFrame  {
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                         .add(createGridButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(showList))
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18))
+                        .add(showList)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(loadTemplate))))
         );
 
         pack();
@@ -185,6 +198,10 @@ public class MultiWellGui extends javax.swing.JFrame  {
     private void showListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showListActionPerformed
 controller.showList();
     }//GEN-LAST:event_showListActionPerformed
+
+    private void loadTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadTemplateActionPerformed
+        controller.loadTemplate();
+    }//GEN-LAST:event_loadTemplateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -228,6 +245,7 @@ controller.showList();
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton loadTemplate;
     private javax.swing.JTextField rows;
     private javax.swing.JButton showList;
     // End of variables declaration//GEN-END:variables
