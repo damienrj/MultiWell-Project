@@ -4,6 +4,7 @@
  */
 package MultiWell;
 
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mmcorej.CMMCore;
@@ -31,6 +32,7 @@ public class WellController {
     private int row;
     private int col;
     private PositionList list;
+    private ArrayList<String[]> gridCenters;
 
     public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
         gui = guiIN;
@@ -95,10 +97,10 @@ public class WellController {
         double[][][] gridCorner = grid.getGridCorner();
 
         list = new PositionList();
-        
+
         for (int x = 0; x <= row - 1; x = x + 1) {
             for (int y = 0; y <= col - 1; y = y + 1) {
-                
+
 
                 MultiStagePosition msp = new MultiStagePosition(xyStage, gridCorner[x][y][0], gridCorner[x][y][1], zStage, 100.0);
                 msp.setLabel("Box Row " + Integer.toString(x) + "Col " + Integer.toString(y));
@@ -117,9 +119,34 @@ public class WellController {
 
 
     }
-    
-    public void loadTemplate(){
+
+    public void loadTemplate() {
         GridTemplate grid = new GridTemplate();
         grid.loadTemplete();
+        gridCenters = grid.getGrid();
+        int r = gridCenters.size();
+
+        list = new PositionList();
+        int i = 0;
+        for (String[] rowPoints : gridCenters) {
+            i=i+1;
+            for (int x = 0; x <= rowPoints.length - 2; x = x + 2) {
+                double xPoint = Double.parseDouble(rowPoints[x]);
+                double yPoint = Double.parseDouble(rowPoints[x + 1]);
+                MultiStagePosition msp = new MultiStagePosition(xyStage, xPoint, yPoint, zStage, 100.0);
+                msp.setLabel("Box Row " + Integer.toString(i));
+
+
+                list.addPosition(msp);
+            }
+
+        }
+        try {
+
+            gui.setPositionList(list);
+        } catch (MMScriptException ex) {
+            Logger.getLogger(MultiWell.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }

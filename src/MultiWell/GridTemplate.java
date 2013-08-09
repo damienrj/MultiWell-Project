@@ -7,6 +7,7 @@ package MultiWell;
 import java.io.*;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -26,6 +27,8 @@ public class GridTemplate {
 
     public GridTemplate() {
         JFileChooser fileopen = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("csv files", "csv");
+        fileopen.addChoosableFileFilter(filter);
 
         int ret = fileopen.showDialog(null, "Open file");
 
@@ -36,13 +39,17 @@ public class GridTemplate {
         }
     }
 
+    public ArrayList<String[]> getGrid(){
+        return data;
+    }
+    
     public void loadTemplete() {
         try {
             br = new LineNumberReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
                 //Use Comma as seperator
                 data.add(line.split(csvSplitBy));
-                System.out.println(line);
+                //System.out.println(line);
             }
 
         } catch (FileNotFoundException e) {
