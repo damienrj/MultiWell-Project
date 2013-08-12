@@ -81,9 +81,17 @@ public class Vector3D extends Vector
   @Override
   public Vector plus(Vector cVector) 
   {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    Vector3D cVectorResult = new Vector3D ();
+    Vector3D cVector3D = (Vector3D) cVector;
+    
+    cVectorResult.mXCoord = cVector3D.mXCoord + mXCoord;
+    cVectorResult.mYCoord = cVector3D.mYCoord + mYCoord;
+    cVectorResult.mZCoord = cVector3D.mZCoord + mZCoord;
+    
+    return cVectorResult;
+    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
- 
+ /*
   public Vector3D plus(Vector3D cVector3D) 
   {
     Vector3D cVectorResult = new Vector3D ();
@@ -94,7 +102,7 @@ public class Vector3D extends Vector
      
     return cVectorResult;
   }
-
+*/
   @Override
   public Vector times(Field f) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
