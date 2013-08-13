@@ -8,21 +8,23 @@ package MultiWell;
  *
  * @author ramunnoj
  */
-public class MultiWellGui extends javax.swing.JFrame  {
+public class MultiWellGui extends javax.swing.JFrame {
+
     private WellController controller;
-  
+
     /**
      * Creates new form MultiWellGui
      */
     public MultiWellGui() {
         initComponents();
-        
-        
+
+
     }
 
-    public void setController(WellController temp){
+    public void setController(WellController temp) {
         controller = temp;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,60 +34,23 @@ public class MultiWellGui extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        topLetCenter = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         rows = new javax.swing.JTextField();
         cols = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        createGridButton = new javax.swing.JButton();
         showList = new javax.swing.JButton();
         loadTemplate = new javax.swing.JButton();
+        topLetCenter = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Multi-Well");
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-
-        topLetCenter.setText("Top Left Center");
-        topLetCenter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                topLetCenterActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Second Corner");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .add(topLetCenter)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
-                .add(jButton2)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(jPanel1Layout.createSequentialGroup()
-                .add(35, 35, 35)
-                .add(topLetCenter)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 40, Short.MAX_VALUE)
-                .add(jButton2)
-                .add(20, 20, 20))
-        );
-
         rows.setText("2");
+        rows.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rowsActionPerformed(evt);
+            }
+        });
 
         cols.setText("2");
         cols.addActionListener(new java.awt.event.ActionListener() {
@@ -94,16 +59,9 @@ public class MultiWellGui extends javax.swing.JFrame  {
             }
         });
 
-        jLabel1.setText("# Rows");
+        jLabel1.setText("Max Row");
 
-        jLabel2.setText("# Columns");
-
-        createGridButton.setText("Create Grid");
-        createGridButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createGridButtonActionPerformed(evt);
-            }
-        });
+        jLabel2.setText("Max Column");
 
         showList.setText("Show List");
         showList.addActionListener(new java.awt.event.ActionListener() {
@@ -119,89 +77,90 @@ public class MultiWellGui extends javax.swing.JFrame  {
             }
         });
 
+        topLetCenter.setText("Top Left Center");
+        topLetCenter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                topLetCenterActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(29, 29, 29)
+                .add(30, 30, 30)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(loadTemplate)
                     .add(layout.createSequentialGroup()
-                        .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel1))
-                    .add(layout.createSequentialGroup()
-                        .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(jLabel2))
-                    .add(createGridButton)
-                    .add(layout.createSequentialGroup()
-                        .add(6, 6, 6)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(loadTemplate)
-                            .add(showList))))
-                .addContainerGap(81, Short.MAX_VALUE))
+                            .add(showList)
+                            .add(topLetCenter))
+                        .add(41, 41, 41)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel1))
+                            .add(layout.createSequentialGroup()
+                                .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(jLabel2)))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(136, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                    .add(layout.createSequentialGroup()
-                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(18, 18, 18))
-                    .add(layout.createSequentialGroup()
+            .add(layout.createSequentialGroup()
+                .addContainerGap(33, Short.MAX_VALUE)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(topLetCenter)
+                        .add(32, 32, 32)
+                        .add(showList))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(jLabel1))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel2))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(createGridButton)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(showList)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(loadTemplate))))
+                            .add(jLabel2))))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(loadTemplate)
+                .add(70, 70, 70))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void topLetCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topLetCenterActionPerformed
-        controller.setFirstBox();
-    }//GEN-LAST:event_topLetCenterActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controller.setSecondBox();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void colsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_colsActionPerformed
 
-    private void createGridButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createGridButtonActionPerformed
-        String str = this.rows.getText();
-        int row = Integer.parseInt(str);
-        
-        String str2 = this.cols.getText();
-        int col = Integer.parseInt(str2);
-        
-        controller.setRows(row);
-        controller.setCols(col);
-        controller.makeGrid();
-    }//GEN-LAST:event_createGridButtonActionPerformed
-
     private void showListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showListActionPerformed
-controller.showList();
+        controller.showList();
     }//GEN-LAST:event_showListActionPerformed
 
     private void loadTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadTemplateActionPerformed
+        String str = this.rows.getText();
+        int row = Integer.parseInt(str);
+
+        String str2 = this.cols.getText();
+        int col = Integer.parseInt(str2);
+
+        controller.setRows(row);
+        controller.setCols(col);
+
         controller.loadTemplate();
     }//GEN-LAST:event_loadTemplateActionPerformed
+
+    private void topLetCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topLetCenterActionPerformed
+        controller.setFirstBox();
+    }//GEN-LAST:event_topLetCenterActionPerformed
+
+    private void rowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rowsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rowsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,11 +198,8 @@ controller.showList();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cols;
-    private javax.swing.JButton createGridButton;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loadTemplate;
     private javax.swing.JTextField rows;
     private javax.swing.JButton showList;

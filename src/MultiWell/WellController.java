@@ -33,6 +33,9 @@ public class WellController {
     private int col;
     private PositionList list;
     private ArrayList<String[]> gridCenters;
+    private final double pixSize;
+    private final long imageHeight;
+    private final long imageWidth;
 
     public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
         gui = guiIN;
@@ -40,6 +43,11 @@ public class WellController {
         acq = gui.getAcquisitionEngine();
         xyStage = core.getXYStageDevice();
         zStage = core.getFocusDevice();
+
+        pixSize = core.getPixelSizeUm();
+        imageHeight = core.getImageHeight();
+        imageWidth = core.getImageWidth();
+
 
         //Position 1 is for the first box, 2 the second box
         x = new double[2];
@@ -125,17 +133,28 @@ public class WellController {
         grid.loadTemplete();
         gridCenters = grid.getGrid();
         int r = gridCenters.size();
+        if (row <= r) {
+            r = row;
+        }
+
 
         list = new PositionList();
-        int i = 0;
-        for (String[] rowPoints : gridCenters) {
-            i=i+1;
-            for (int a = 0; a <= rowPoints.length - 2; a = a + 2) {
-                double xPoint = Double.parseDouble(rowPoints[a]);
-                double yPoint = Double.parseDouble(rowPoints[a + 1]);
-                
-                MultiStagePosition msp = new MultiStagePosition(xyStage, xPoint+x[0], yPoint+y[0], zStage, z[0]);
-                msp.setLabel("Col " + Integer.toString((a+2)/2) +  " Row " + Integer.toString(i));
+
+        //for (String[] rowPoints : gridCenters) {
+        for (int i = 0; i<r; i++) {
+            String[] rowPoints = gridCenters.get(i);
+
+            int c = rowPoints.length - 2;
+
+            if (2*col-2 < c){
+                c=2*col-2;
+            }
+            for (int a = 0; a <= c; a = a + 2) {
+                double xPoint = 1000 * Double.parseDouble(rowPoints[a]);
+                double yPoint = 1000 * Double.parseDouble(rowPoints[a + 1]);
+
+                MultiStagePosition msp = new MultiStagePosition(xyStage, x[0] - xPoint, yPoint + y[0], zStage, z[0]);
+                msp.setLabel("Col " + Integer.toString((a + 2) / 2) + " Row " + Integer.toString(i+1));
 
 
                 list.addPosition(msp);

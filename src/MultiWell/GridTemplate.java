@@ -44,6 +44,7 @@ public class GridTemplate {
     }
     
     public void loadTemplete() {
+        
         try {
             br = new LineNumberReader(new FileReader(csvFile));
             while ((line = br.readLine()) != null) {
