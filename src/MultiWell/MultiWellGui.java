@@ -33,7 +33,7 @@ public class MultiWellGui extends javax.swing.JFrame  {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        topLetCenter = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         rows = new javax.swing.JTextField();
         cols = new javax.swing.JTextField();
@@ -48,10 +48,10 @@ public class MultiWellGui extends javax.swing.JFrame  {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton1.setText("First Corner");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        topLetCenter.setText("Top Left Center");
+        topLetCenter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                topLetCenterActionPerformed(evt);
             }
         });
 
@@ -68,7 +68,7 @@ public class MultiWellGui extends javax.swing.JFrame  {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .add(jButton1)
+                .add(topLetCenter)
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(58, Short.MAX_VALUE)
@@ -79,7 +79,7 @@ public class MultiWellGui extends javax.swing.JFrame  {
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
                 .add(35, 35, 35)
-                .add(jButton1)
+                .add(topLetCenter)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 40, Short.MAX_VALUE)
                 .add(jButton2)
                 .add(20, 20, 20))
@@ -171,9 +171,9 @@ public class MultiWellGui extends javax.swing.JFrame  {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void topLetCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topLetCenterActionPerformed
         controller.setFirstBox();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_topLetCenterActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         controller.setSecondBox();
@@ -240,7 +240,6 @@ controller.showList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cols;
     private javax.swing.JButton createGridButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -248,5 +247,6 @@ controller.showList();
     private javax.swing.JButton loadTemplate;
     private javax.swing.JTextField rows;
     private javax.swing.JButton showList;
+    private javax.swing.JButton topLetCenter;
     // End of variables declaration//GEN-END:variables
 }

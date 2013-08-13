@@ -130,11 +130,12 @@ public class WellController {
         int i = 0;
         for (String[] rowPoints : gridCenters) {
             i=i+1;
-            for (int x = 0; x <= rowPoints.length - 2; x = x + 2) {
-                double xPoint = Double.parseDouble(rowPoints[x]);
-                double yPoint = Double.parseDouble(rowPoints[x + 1]);
-                MultiStagePosition msp = new MultiStagePosition(xyStage, xPoint, yPoint, zStage, 100.0);
-                msp.setLabel("Box Row " + Integer.toString(i));
+            for (int a = 0; a <= rowPoints.length - 2; a = a + 2) {
+                double xPoint = Double.parseDouble(rowPoints[a]);
+                double yPoint = Double.parseDouble(rowPoints[a + 1]);
+                
+                MultiStagePosition msp = new MultiStagePosition(xyStage, xPoint+x[0], yPoint+y[0], zStage, z[0]);
+                msp.setLabel("Col " + Integer.toString((a+2)/2) +  " Row " + Integer.toString(i));
 
 
                 list.addPosition(msp);
