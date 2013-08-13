@@ -54,7 +54,7 @@ public class Vector3D extends Vector
   }
   
   public double getYCoord ()
-  {
+  { 
     return mYCoord;
   }
   
@@ -81,15 +81,12 @@ public class Vector3D extends Vector
   @Override
   public Vector plus(Vector cVector) 
   {
-    Vector3D cVectorResult = new Vector3D ();
     Vector3D cVector3D = (Vector3D) cVector;
-    
-    cVectorResult.mXCoord = cVector3D.mXCoord + mXCoord;
-    cVectorResult.mYCoord = cVector3D.mYCoord + mYCoord;
-    cVectorResult.mZCoord = cVector3D.mZCoord + mZCoord;
+    Vector3D cVectorResult = new Vector3D (cVector3D.mXCoord + mXCoord, 
+                                           cVector3D.mYCoord + mYCoord, 
+                                           cVector3D.mZCoord + mZCoord);
     
     return cVectorResult;
-    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
  /*
   public Vector3D plus(Vector3D cVector3D) 
@@ -104,18 +101,36 @@ public class Vector3D extends Vector
   }
 */
   @Override
-  public Vector times(Field f) {
+  public Vector times(Field value) 
+  {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+  
+  public Vector3D times (double value)
+  {
+    Vector3D cVectorResult = new Vector3D (mXCoord * value, mYCoord * value, 
+                                           mZCoord * value);
+    
+    return cVectorResult;
   }
 
   @Override
   public Field times(Vector vector) {
     throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
+  
+  public double times (Vector3D cVector3D)
+  {
+    return cVector3D.mXCoord * mXCoord + cVector3D.mYCoord * mYCoord 
+           + cVector3D.mZCoord * mZCoord;
+  }
 
   @Override
-  public Vector copy() {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  public Vector copy() 
+  {
+    Vector3D cVector3D = new Vector3D (mXCoord, mYCoord, mZCoord);
+    
+    return cVector3D;    
   }
   
   
