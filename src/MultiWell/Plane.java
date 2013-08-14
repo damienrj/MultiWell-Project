@@ -41,7 +41,7 @@ public class Plane
   }
 
   public void setNormalVector (Vector3D cVector1, Vector3D cVector2)
-  {
+  { 
     mcNormalVector = (Vector3D) (cVector1.cross (cVector2)).copy (); 
   }
 

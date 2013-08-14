@@ -121,8 +121,8 @@ public class Vector3D extends Vector
   
   public double times (Vector3D cVector3D)
   {
-    return cVector3D.mXCoord * mXCoord + cVector3D.mYCoord * mYCoord 
-           + cVector3D.mZCoord * mZCoord;
+    return cVector3D.getXCoord () * mXCoord + cVector3D.getYCoord () * mYCoord 
+           + cVector3D.getZCoord () * mZCoord;
   }
 
   @Override
@@ -131,6 +131,17 @@ public class Vector3D extends Vector
     Vector3D cVector3D = new Vector3D (mXCoord, mYCoord, mZCoord);
     
     return cVector3D;    
+  }
+  
+  public Vector3D cross (Vector3D cVector3D)
+  {
+    Vector3D cVectorResult = new Vector3D ();
+    
+    cVectorResult.setXCoord (mYCoord * cVector3D.getZCoord () - mZCoord * cVector3D.getYCoord ());
+    cVectorResult.setYCoord (mZCoord * cVector3D.getXCoord () - mXCoord * cVector3D.getZCoord ());
+    cVectorResult.setZCoord (mXCoord * cVector3D.getYCoord () - mYCoord * cVector3D.getXCoord ());
+    
+    return cVectorResult;
   }
   
   
