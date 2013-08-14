@@ -33,9 +33,9 @@ public class WellController {
     private int col;
     private PositionList list;
     private ArrayList<String[]> gridCenters;
-    private final double pixSize;
-    private final long imageHeight;
-    private final long imageWidth;
+    private double pixSize;
+    private long imageHeight;
+    private long imageWidth;
     private int startCol;
     private int startRow;
 
@@ -94,12 +94,10 @@ public class WellController {
     public void setInit(int r, int c, int startr, int startc) {
         row = r;
         col = c;
-        startRow=startr;
-        startCol=startc;
+        startRow = startr;
+        startCol = startc;
 
     }
-
-
 
     public void makeGrid() {
         grid = new MakeGrid();
@@ -131,6 +129,36 @@ public class WellController {
 
     }
 
+    public void makeTiles() {
+
+        int num = list.getNumberOfPositions();
+        PositionList tileList = new PositionList();
+
+        for (int i = 0; i < num; i++) {
+            MultiStagePosition tempPoint = list.getPosition(i);
+            double xPoint = tempPoint.getX();
+            double yPoint = tempPoint.getY();
+            double zPoint = tempPoint.getZ();
+
+            for (int a = -1; a <= 1; a++) {
+                for (int b = -1; b <= 1; b++) {
+
+                    MultiStagePosition msp = new MultiStagePosition(xyStage, xPoint - a * pixSize * imageWidth, yPoint - b * pixSize * imageHeight, zStage, z[0]);
+                    msp.setLabel("Box " + Integer.toString(i));
+                    tileList.addPosition(msp);
+                }
+            }
+
+
+
+        }
+        try {
+            gui.setPositionList(tileList);
+        } catch (MMScriptException ex) {
+            Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public void loadTemplate() {
         GridTemplate grid = new GridTemplate();
         grid.loadTemplete();
@@ -144,20 +172,20 @@ public class WellController {
         list = new PositionList();
 
         //for (String[] rowPoints : gridCenters) {
-        for (int i = startRow-1; i<r; i++) {
+        for (int i = startRow - 1; i < r; i++) {
             String[] rowPoints = gridCenters.get(i);
 
             int c = rowPoints.length - 2;
 
-            if (2*col-2 < c){
-                c=2*col-2;
+            if (2 * col - 2 < c) {
+                c = 2 * col - 2;
             }
-            for (int a = 2*startCol-2; a <= c; a = a + 2) {
+            for (int a = 2 * startCol - 2; a <= c; a = a + 2) {
                 double xPoint = 1000 * Double.parseDouble(rowPoints[a]);
                 double yPoint = 1000 * Double.parseDouble(rowPoints[a + 1]);
 
                 MultiStagePosition msp = new MultiStagePosition(xyStage, x[0] - xPoint, yPoint + y[0], zStage, z[0]);
-                msp.setLabel("Col " + Integer.toString((a + 2) / 2) + " Row " + Integer.toString(i+1));
+                msp.setLabel("Col " + Integer.toString((a + 2) / 2) + " Row " + Integer.toString(i + 1));
 
 
                 list.addPosition(msp);
