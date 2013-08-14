@@ -36,6 +36,8 @@ public class WellController {
     private final double pixSize;
     private final long imageHeight;
     private final long imageWidth;
+    private int startCol;
+    private int startRow;
 
     public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
         gui = guiIN;
@@ -89,14 +91,15 @@ public class WellController {
         }
     }
 
-    public void setRows(int r) {
+    public void setInit(int r, int c, int startr, int startc) {
         row = r;
-
-    }
-
-    public void setCols(int c) {
         col = c;
+        startRow=startr;
+        startCol=startc;
+
     }
+
+
 
     public void makeGrid() {
         grid = new MakeGrid();
@@ -141,7 +144,7 @@ public class WellController {
         list = new PositionList();
 
         //for (String[] rowPoints : gridCenters) {
-        for (int i = 0; i<r; i++) {
+        for (int i = startRow-1; i<r; i++) {
             String[] rowPoints = gridCenters.get(i);
 
             int c = rowPoints.length - 2;
@@ -149,7 +152,7 @@ public class WellController {
             if (2*col-2 < c){
                 c=2*col-2;
             }
-            for (int a = 0; a <= c; a = a + 2) {
+            for (int a = 2*startCol-2; a <= c; a = a + 2) {
                 double xPoint = 1000 * Double.parseDouble(rowPoints[a]);
                 double yPoint = 1000 * Double.parseDouble(rowPoints[a + 1]);
 

@@ -41,27 +41,29 @@ public class MultiWellGui extends javax.swing.JFrame {
         showList = new javax.swing.JButton();
         loadTemplate = new javax.swing.JButton();
         topLetCenter = new javax.swing.JButton();
+        startRow = new javax.swing.JTextField();
+        startCol = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Multi-Well");
 
-        rows.setText("2");
+        rows.setText("4");
         rows.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rowsActionPerformed(evt);
             }
         });
 
-        cols.setText("2");
+        cols.setText("8");
         cols.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 colsActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Max Row");
+        jLabel1.setText("Start:End Row");
 
-        jLabel2.setText("Max Column");
+        jLabel2.setText("Start:End Column");
 
         showList.setText("Show List");
         showList.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +86,15 @@ public class MultiWellGui extends javax.swing.JFrame {
             }
         });
 
+        startRow.setText("1");
+
+        startCol.setText("1");
+        startCol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startColActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,10 +104,16 @@ public class MultiWellGui extends javax.swing.JFrame {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(loadTemplate)
                     .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(showList)
-                            .add(topLetCenter))
-                        .add(41, 41, 41)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                            .add(layout.createSequentialGroup()
+                                .add(showList)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(layout.createSequentialGroup()
+                                .add(topLetCenter)
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                                .add(startRow, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
                                 .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -106,7 +123,7 @@ public class MultiWellGui extends javax.swing.JFrame {
                                 .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(jLabel2)))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -120,11 +137,13 @@ public class MultiWellGui extends javax.swing.JFrame {
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel1))
+                            .add(jLabel1)
+                            .add(startRow, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(jLabel2))))
+                            .add(jLabel2)
+                            .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(loadTemplate)
                 .add(70, 70, 70))
@@ -148,8 +167,9 @@ public class MultiWellGui extends javax.swing.JFrame {
         String str2 = this.cols.getText();
         int col = Integer.parseInt(str2);
 
-        controller.setRows(row);
-        controller.setCols(col);
+        controller.setInit(row, col, Integer.parseInt(startRow.getText()), Integer.parseInt(startCol.getText()));
+       
+        
 
         controller.loadTemplate();
     }//GEN-LAST:event_loadTemplateActionPerformed
@@ -161,6 +181,10 @@ public class MultiWellGui extends javax.swing.JFrame {
     private void rowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rowsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rowsActionPerformed
+
+    private void startColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startColActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startColActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +227,8 @@ public class MultiWellGui extends javax.swing.JFrame {
     private javax.swing.JButton loadTemplate;
     private javax.swing.JTextField rows;
     private javax.swing.JButton showList;
+    private javax.swing.JTextField startCol;
+    private javax.swing.JTextField startRow;
     private javax.swing.JButton topLetCenter;
     // End of variables declaration//GEN-END:variables
 }
