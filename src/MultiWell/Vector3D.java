@@ -144,5 +144,8 @@ public class Vector3D extends Vector
     return cVectorResult;
   }
   
-  
+  public void display ()
+  {
+    System.out.println ("<" + mXCoord + ", " + mYCoord + ", " + mZCoord + '>');
+  }
 }
