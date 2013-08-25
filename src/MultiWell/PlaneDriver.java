@@ -1,15 +1,27 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Creates a Plane class driver to test the Plane and Vector3D classes
+ * 
+ * @author Alec Bowcock
+ * 
+ * @version %I% %G%
+ * 
+ * @since 1.0
+ * 
+ * @see Plane
  */
+
 package MultiWell;
 
-/**
- *
- * @author bowcocka
- */
 public class PlaneDriver 
 {
+    /**
+     * Main testing method
+     * 
+     * @param args - command line arguments 
+     * 
+     * @since 1.0
+     */
+    
     public static void main (String [] args)
     {
       Vector3D cVector3D1 = new Vector3D (3, 14, 1);
@@ -20,6 +32,10 @@ public class PlaneDriver
       
       System.out.println ("initial position: ");
       cPlane.getInitialVector().display ();
+      cPlane.getInitialVector().opposite();
+      cPlane.getInitialVector().display();
+      
+      /*
       System.out.println ("normal vector: ");
       cPlane.getNormalVector().display ();
       
@@ -43,6 +59,6 @@ public class PlaneDriver
       */
       
       
-      
+     
     }
 }
