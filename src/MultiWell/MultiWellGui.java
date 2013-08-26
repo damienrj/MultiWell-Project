@@ -43,6 +43,7 @@ public class MultiWellGui extends javax.swing.JFrame {
         topLetCenter = new javax.swing.JButton();
         startRow = new javax.swing.JTextField();
         startCol = new javax.swing.JTextField();
+        tileButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Multi-Well");
@@ -95,6 +96,13 @@ public class MultiWellGui extends javax.swing.JFrame {
             }
         });
 
+        tileButton.setText("Tile");
+        tileButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tileButtonActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,6 +110,9 @@ public class MultiWellGui extends javax.swing.JFrame {
             .add(layout.createSequentialGroup()
                 .add(30, 30, 30)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(6, 6, 6)
+                        .add(tileButton))
                     .add(loadTemplate)
                     .add(layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
@@ -146,7 +157,9 @@ public class MultiWellGui extends javax.swing.JFrame {
                             .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(loadTemplate)
-                .add(70, 70, 70))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(tileButton)
+                .add(35, 35, 35))
         );
 
         pack();
@@ -185,6 +198,10 @@ public class MultiWellGui extends javax.swing.JFrame {
     private void startColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startColActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_startColActionPerformed
+
+    private void tileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tileButtonActionPerformed
+        controller.makeTiles();
+    }//GEN-LAST:event_tileButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,6 +246,7 @@ public class MultiWellGui extends javax.swing.JFrame {
     private javax.swing.JButton showList;
     private javax.swing.JTextField startCol;
     private javax.swing.JTextField startRow;
+    private javax.swing.JButton tileButton;
     private javax.swing.JButton topLetCenter;
     // End of variables declaration//GEN-END:variables
 }
