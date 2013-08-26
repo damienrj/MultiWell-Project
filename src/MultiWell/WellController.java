@@ -38,6 +38,7 @@ public class WellController {
     private long imageWidth;
     private int startCol;
     private int startRow;
+    private int overLapPercent;
 
     public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
         gui = guiIN;
@@ -61,6 +62,10 @@ public class WellController {
     public void openMessage() {
         gui.showMessage("test");
 
+    }
+
+    public void setOverlap(int x) {
+        overLapPercent = x;
     }
 
     public void setFirstBox() {
@@ -143,8 +148,11 @@ public class WellController {
             for (int a = -1; a <= 1; a++) {
                 for (int b = -1; b <= 1; b++) {
 
-                    MultiStagePosition msp = new MultiStagePosition(xyStage, xPoint - a * pixSize * imageWidth, yPoint - b * pixSize * imageHeight, zStage, z[0]);
-                    msp.setLabel("Box " + Integer.toString(i));
+                    MultiStagePosition msp = new MultiStagePosition(xyStage,
+                            xPoint - a * pixSize * imageWidth * (100 - overLapPercent)/100,
+                            yPoint - b * pixSize * imageHeight * (100 - overLapPercent)/100,
+                            zStage, z[0]);
+                    msp.setLabel("Box " + Integer.toString(i + 1));
                     tileList.addPosition(msp);
                 }
             }
