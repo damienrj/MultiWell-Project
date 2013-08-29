@@ -135,7 +135,11 @@ public class WellController {
     }
 
     public void makeTiles() {
-
+        try {
+            list = gui.getPositionList();
+        } catch (MMScriptException ex) {
+            Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         int num = list.getNumberOfPositions();
         PositionList tileList = new PositionList();
 
