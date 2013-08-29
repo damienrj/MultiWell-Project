@@ -144,6 +144,7 @@ public class WellController {
         PositionList tileList = new PositionList();
 
         for (int i = 0; i < num; i++) {
+            int count = 0;
             MultiStagePosition tempPoint = list.getPosition(i);
             double xPoint = tempPoint.getX();
             double yPoint = tempPoint.getY();
@@ -151,12 +152,12 @@ public class WellController {
 
             for (int a = -1; a <= 1; a++) {
                 for (int b = -1; b <= 1; b++) {
-
+                    count++;
                     MultiStagePosition msp = new MultiStagePosition(xyStage,
                             xPoint - a * pixSize * imageWidth * (100 - overLapPercent)/100,
                             yPoint - b * pixSize * imageHeight * (100 - overLapPercent)/100,
                             zStage, z[0]);
-                    msp.setLabel("Box " + Integer.toString(i + 1));
+                    msp.setLabel("Box " + Integer.toString(i + 1) + '_' + Integer.toString(count));
                     tileList.addPosition(msp);
                 }
             }
