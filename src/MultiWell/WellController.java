@@ -136,37 +136,37 @@ public class WellController {
 
     public void makeTiles() {
         try {
-            list = gui.getPositionList();
-        } catch (MMScriptException ex) {
-            Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        int num = list.getNumberOfPositions();
-        PositionList tileList = new PositionList();
+            PositionList list2 = gui.getPositionList();
+            int num = list2.getNumberOfPositions();
+            PositionList tileList = new PositionList();
 
-        for (int i = 0; i < num; i++) {
-            int count = 0;
-            MultiStagePosition tempPoint = list.getPosition(i);
-            double xPoint = tempPoint.getX();
-            double yPoint = tempPoint.getY();
-            double zPoint = tempPoint.getZ();
+            for (int i = 0; i < num; i++) {
+                int count = 0;
+                MultiStagePosition tempPoint = list2.getPosition(i);
+                double xPoint = tempPoint.getX();
+                double yPoint = tempPoint.getY();
+                double zPoint = tempPoint.getZ();
 
-            for (int a = -1; a <= 1; a++) {
-                for (int b = -1; b <= 1; b++) {
-                    count++;
-                    MultiStagePosition msp = new MultiStagePosition(xyStage,
-                            xPoint - a * pixSize * imageWidth * (100 - overLapPercent)/100,
-                            yPoint - b * pixSize * imageHeight * (100 - overLapPercent)/100,
-                            zStage, z[0]);
-                    msp.setLabel("Box " + Integer.toString(i + 1) + '_' + Integer.toString(count));
-                    tileList.addPosition(msp);
+                for (int a = -1; a <= 1; a++) {
+                    for (int b = -1; b <= 1; b++) {
+                        count++;
+                        MultiStagePosition msp = new MultiStagePosition(xyStage,
+                                xPoint - a * pixSize * imageWidth * (100 - overLapPercent)/100,
+                                yPoint - b * pixSize * imageHeight * (100 - overLapPercent)/100,
+                                zStage, zPoint);
+                        msp.setLabel("Box " + Integer.toString(i + 1) + '_' + Integer.toString(count));
+                        tileList.addPosition(msp);
+                    }
                 }
+
+
+
             }
-
-
-
-        }
-        try {
-            gui.setPositionList(tileList);
+            try {
+                gui.setPositionList(tileList);
+            } catch (MMScriptException ex) {
+                Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (MMScriptException ex) {
             Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
         }
