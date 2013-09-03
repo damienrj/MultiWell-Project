@@ -46,6 +46,9 @@ public class MultiWellGui extends javax.swing.JFrame {
         tileButton = new javax.swing.JButton();
         overLapBox = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        point2Button = new javax.swing.JButton();
+        point3Button = new javax.swing.JButton();
+        focalPlaneButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Multi-Well");
@@ -120,6 +123,12 @@ public class MultiWellGui extends javax.swing.JFrame {
 
         jLabel3.setText("Overlap %");
 
+        point2Button.setText("Point 2");
+
+        point3Button.setText("Point 3");
+
+        focalPlaneButton.setText("Find Focal Plane");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,17 +137,25 @@ public class MultiWellGui extends javax.swing.JFrame {
                 .add(30, 30, 30)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
-                        .add(tileButton)
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .add(layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(loadTemplate)
-                            .add(showList)
-                            .add(topLetCenter))
+                        .add(focalPlaneButton)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(org.jdesktop.layout.GroupLayout.TRAILING, startRow, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                            .add(showList)
+                            .add(tileButton))
+                        .add(90, 90, 90))
+                    .add(layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                            .add(layout.createSequentialGroup()
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(loadTemplate)
+                                    .add(point2Button))
+                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                    .add(org.jdesktop.layout.GroupLayout.TRAILING, startRow, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                            .add(layout.createSequentialGroup()
+                                .add(point3Button)
+                                .add(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(layout.createSequentialGroup()
@@ -152,8 +169,10 @@ public class MultiWellGui extends javax.swing.JFrame {
                                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                                     .add(jLabel3, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .add(jLabel2, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .add(35, 35, 35))))
+                                    .add(jLabel2)))))
+                    .add(layout.createSequentialGroup()
+                        .add(topLetCenter)
+                        .addContainerGap())))
         );
 
         layout.linkSize(new java.awt.Component[] {cols, overLapBox, rows, startCol, startRow}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -161,12 +180,14 @@ public class MultiWellGui extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(topLetCenter)
-                        .add(32, 32, 32)
-                        .add(showList))
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(loadTemplate)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(point2Button))
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                             .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -179,12 +200,15 @@ public class MultiWellGui extends javax.swing.JFrame {
                             .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                    .add(loadTemplate)
                     .add(overLapBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel3))
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(tileButton)
-                .add(35, 35, 35))
+                    .add(jLabel3)
+                    .add(point3Button))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(showList)
+                    .add(focalPlaneButton))
+                .add(3, 3, 3)
+                .add(tileButton))
         );
 
         pack();
@@ -210,6 +234,7 @@ public class MultiWellGui extends javax.swing.JFrame {
         
 
         controller.loadTemplate();
+        controller.showList();
     }//GEN-LAST:event_loadTemplateActionPerformed
 
     private void topLetCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topLetCenterActionPerformed
@@ -269,11 +294,14 @@ public class MultiWellGui extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cols;
+    private javax.swing.JButton focalPlaneButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton loadTemplate;
     private javax.swing.JTextField overLapBox;
+    private javax.swing.JButton point2Button;
+    private javax.swing.JButton point3Button;
     private javax.swing.JTextField rows;
     private javax.swing.JButton showList;
     private javax.swing.JTextField startCol;
