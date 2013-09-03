@@ -124,10 +124,25 @@ public class MultiWellGui extends javax.swing.JFrame {
         jLabel3.setText("Overlap %");
 
         point2Button.setText("Point 2");
+        point2Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                point2ButtonActionPerformed(evt);
+            }
+        });
 
         point3Button.setText("Point 3");
+        point3Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                point3ButtonActionPerformed(evt);
+            }
+        });
 
         focalPlaneButton.setText("Find Focal Plane");
+        focalPlaneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                focalPlaneButtonActionPerformed(evt);
+            }
+        });
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -257,6 +272,18 @@ public class MultiWellGui extends javax.swing.JFrame {
     private void overLapBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_overLapBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_overLapBoxActionPerformed
+
+    private void focalPlaneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_focalPlaneButtonActionPerformed
+        controller.findFocusPlane();
+    }//GEN-LAST:event_focalPlaneButtonActionPerformed
+
+    private void point2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_point2ButtonActionPerformed
+        controller.setPosition2();
+    }//GEN-LAST:event_point2ButtonActionPerformed
+
+    private void point3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_point3ButtonActionPerformed
+        controller.setPosition3();
+    }//GEN-LAST:event_point3ButtonActionPerformed
 
     /**
      * @param args the command line arguments

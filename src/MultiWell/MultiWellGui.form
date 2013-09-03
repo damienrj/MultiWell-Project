@@ -220,16 +220,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Point 2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="point2ButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="point3Button">
       <Properties>
         <Property name="text" type="java.lang.String" value="Point 3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="point3ButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="focalPlaneButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Find Focal Plane"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="focalPlaneButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

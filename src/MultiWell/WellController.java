@@ -5,6 +5,7 @@
 package MultiWell;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mmcorej.CMMCore;
@@ -39,6 +40,7 @@ public class WellController {
     private int startCol;
     private int startRow;
     private int overLapPercent;
+    private Plane plane;
 
     public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
         gui = guiIN;
@@ -52,10 +54,10 @@ public class WellController {
         imageWidth = core.getImageWidth();
 
 
-        //Position 1 is for the first box, 2 the second box
-        x = new double[2];
-        y = new double[2];
-        z = new double[2];
+        //Position 0 is for the first box, 1 the second box, 2 the third box
+        x = new double[3];
+        y = new double[3];
+        z = new double[3];
 
     }
 
@@ -83,6 +85,32 @@ public class WellController {
     public void showList() {
         gui.showXYPositionList();
     }
+    
+    public void setPosition2(){
+        
+                try {
+            x[1] = core.getXPosition(xyStage);
+            y[1] = core.getYPosition(xyStage);
+            z[1] = core.getPosition(zStage);
+//System.out.println(Arrays.toString(x));
+//System.out.println(Arrays.toString(y));
+//System.out.println(Arrays.toString(z));
+        } catch (Exception ex) {
+            Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    public void setPosition3(){
+                try {
+            x[2] = core.getXPosition(xyStage);
+            y[2] = core.getYPosition(xyStage);
+            z[2] = core.getPosition(zStage);
+
+
+        } catch (Exception ex) {
+            Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public void setSecondBox() {
 
@@ -92,6 +120,34 @@ public class WellController {
             z[1] = core.getPosition(zStage);
 
         } catch (Exception ex) {
+            Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void findFocusPlane(){
+        plane = new Plane();
+        Vector3D cVector3D1 = new Vector3D (x[0]-x[1], y[0]-y[1], z[0]-z[1]);
+        Vector3D cVector3D2 = new Vector3D (x[0]-x[2], y[0]-y[2], z[0]-z[2]);
+        plane.setNormalVector(cVector3D1, cVector3D2);
+        plane.setInitialVector(new Vector3D(x[0], y[0], z[0]));
+        try {
+            list = gui.getPositionList();
+            int num = list.getNumberOfPositions();
+            
+            for (int i = 0; i < num; i++){
+                MultiStagePosition currentPosition = list.getPosition(i);
+                double X=currentPosition.getX();
+                double Y=currentPosition.getY();
+                double Z = currentPosition.getZ();
+                System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
+                Z = plane.computeZCoord(X, Y);
+                System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
+                
+                MultiStagePosition msp = new MultiStagePosition(xyStage, X, Y, zStage, Z);
+                msp.setLabel(currentPosition.getLabel());
+                list.replacePosition(i, msp);
+            }
+        } catch (MMScriptException ex) {
             Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
