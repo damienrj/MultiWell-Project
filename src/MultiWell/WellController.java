@@ -41,6 +41,7 @@ public class WellController {
     private int startRow;
     private int overLapPercent;
     private Plane plane;
+    private int[] size;
 
     public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
         gui = guiIN;
@@ -189,13 +190,19 @@ public class WellController {
 
 
     }
+    
+    public void setTileSizes(int r, int c){
+        size[0]=r;
+        size[1]=c;
+        
+    }
 
     public void makeTiles() {
         try {
             PositionList list2 = gui.getPositionList();
             int num = list2.getNumberOfPositions();
             PositionList tileList = new PositionList();
-
+            
             for (int i = 0; i < num; i++) {
                 int count = 0;
                 MultiStagePosition tempPoint = list2.getPosition(i);
@@ -203,8 +210,8 @@ public class WellController {
                 double yPoint = tempPoint.getY();
                 double zPoint = tempPoint.getZ();
 
-                for (int a = -1; a <= 1; a++) {
-                    for (int b = -1; b <= 1; b++) {
+                for (int a = -(size[1]-1/2); a <= (size[1]-1/2); a++) {
+                    for (int b = -(size[0]-1/2); b <= (size[0]-1/2); b++) {
                         count++;
                         MultiStagePosition msp = new MultiStagePosition(xyStage,
                                 xPoint - a * pixSize * imageWidth * (100 - overLapPercent)/100,
