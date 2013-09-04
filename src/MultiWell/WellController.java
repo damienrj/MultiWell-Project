@@ -192,6 +192,7 @@ public class WellController {
     }
     
     public void setTileSizes(int r, int c){
+        size = new int[2];
         size[0]=r;
         size[1]=c;
         
@@ -210,8 +211,8 @@ public class WellController {
                 double yPoint = tempPoint.getY();
                 double zPoint = tempPoint.getZ();
 
-                for (int a = -(size[1]-1/2); a <= (size[1]-1/2); a++) {
-                    for (int b = -(size[0]-1/2); b <= (size[0]-1/2); b++) {
+                for (int a = -(size[1]-1)/2; a <= (size[1]-1)/2; a++) {
+                    for (int b = -(size[0]-1)/2; b <= (size[0]-1)/2; b++) {
                         count++;
                         MultiStagePosition msp = new MultiStagePosition(xyStage,
                                 xPoint - a * pixSize * imageWidth * (100 - overLapPercent)/100,
