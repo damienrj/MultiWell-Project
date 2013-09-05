@@ -86,10 +86,10 @@ public class WellController {
     public void showList() {
         gui.showXYPositionList();
     }
-    
-    public void setPosition2(){
-        
-                try {
+
+    public void setPosition2() {
+
+        try {
             x[1] = core.getXPosition(xyStage);
             y[1] = core.getYPosition(xyStage);
             z[1] = core.getPosition(zStage);
@@ -99,10 +99,11 @@ public class WellController {
         } catch (Exception ex) {
             Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    public void setPosition3(){
-                try {
+
+    public void setPosition3() {
+        try {
             x[2] = core.getXPosition(xyStage);
             y[2] = core.getYPosition(xyStage);
             z[2] = core.getPosition(zStage);
@@ -124,26 +125,26 @@ public class WellController {
             Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void findFocusPlane(){
+
+    public void findFocusPlane() {
         plane = new Plane();
-        Vector3D cVector3D1 = new Vector3D (x[0]-x[1], y[0]-y[1], z[0]-z[1]);
-        Vector3D cVector3D2 = new Vector3D (x[0]-x[2], y[0]-y[2], z[0]-z[2]);
+        Vector3D cVector3D1 = new Vector3D(x[0] - x[1], y[0] - y[1], z[0] - z[1]);
+        Vector3D cVector3D2 = new Vector3D(x[0] - x[2], y[0] - y[2], z[0] - z[2]);
         plane.setNormalVector(cVector3D1, cVector3D2);
         plane.setInitialVector(new Vector3D(x[0], y[0], z[0]));
         try {
             list = gui.getPositionList();
             int num = list.getNumberOfPositions();
-            
-            for (int i = 0; i < num; i++){
+
+            for (int i = 0; i < num; i++) {
                 MultiStagePosition currentPosition = list.getPosition(i);
-                double X=currentPosition.getX();
-                double Y=currentPosition.getY();
+                double X = currentPosition.getX();
+                double Y = currentPosition.getY();
                 double Z = currentPosition.getZ();
                 System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
                 Z = plane.computeZCoord(X, Y);
                 System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
-                
+
                 MultiStagePosition msp = new MultiStagePosition(xyStage, X, Y, zStage, Z);
                 msp.setLabel(currentPosition.getLabel());
                 list.replacePosition(i, msp);
@@ -190,12 +191,12 @@ public class WellController {
 
 
     }
-    
-    public void setTileSizes(int r, int c){
+
+    public void setTileSizes(int r, int c) {
         size = new int[2];
-        size[0]=r;
-        size[1]=c;
-        
+        size[0] = r;
+        size[1] = c;
+
     }
 
     public void makeTiles() {
@@ -203,7 +204,11 @@ public class WellController {
             PositionList list2 = gui.getPositionList();
             int num = list2.getNumberOfPositions();
             PositionList tileList = new PositionList();
-            
+
+            pixSize = core.getPixelSizeUm();
+            imageHeight = core.getImageHeight();
+            imageWidth = core.getImageWidth();
+
             for (int i = 0; i < num; i++) {
                 int count = 0;
                 MultiStagePosition tempPoint = list2.getPosition(i);
@@ -211,12 +216,12 @@ public class WellController {
                 double yPoint = tempPoint.getY();
                 double zPoint = tempPoint.getZ();
 
-                for (int a = -(size[1]-1)/2; a <= (size[1]-1)/2; a++) {
-                    for (int b = -(size[0]-1)/2; b <= (size[0]-1)/2; b++) {
+                for (int a = -(size[1] - 1) / 2; a <= (size[1] - 1) / 2; a++) {
+                    for (int b = -(size[0] - 1) / 2; b <= (size[0] - 1) / 2; b++) {
                         count++;
                         MultiStagePosition msp = new MultiStagePosition(xyStage,
-                                xPoint - a * pixSize * imageWidth * (100 - overLapPercent)/100,
-                                yPoint - b * pixSize * imageHeight * (100 - overLapPercent)/100,
+                                xPoint - a * pixSize * imageWidth * (100 - overLapPercent) / 100,
+                                yPoint - b * pixSize * imageHeight * (100 - overLapPercent) / 100,
                                 zStage, zPoint);
                         msp.setLabel("Box " + Integer.toString(i + 1) + '_' + Integer.toString(count));
                         tileList.addPosition(msp);

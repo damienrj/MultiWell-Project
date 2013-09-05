@@ -35,7 +35,6 @@ public class MultiWellGui extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         loadTemplate = new javax.swing.JButton();
         topLetCenter = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -45,7 +44,6 @@ public class MultiWellGui extends javax.swing.JFrame {
         cols = new javax.swing.JTextField();
         startCol = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         point2Button = new javax.swing.JButton();
         point3Button = new javax.swing.JButton();
         focalPlaneButton = new javax.swing.JButton();
@@ -57,15 +55,15 @@ public class MultiWellGui extends javax.swing.JFrame {
         rowTile = new javax.swing.JTextField();
         colTile = new javax.swing.JTextField();
         showList = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Multi-Well");
         setResizable(false);
 
-        jLabel5.setText("Define grid from Template");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Define Grid from Template"));
 
         loadTemplate.setText("Load Template");
+        loadTemplate.setEnabled(false);
         loadTemplate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loadTemplateActionPerformed(evt);
@@ -115,22 +113,21 @@ public class MultiWellGui extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(19, 19, 19)
+                .add(31, 31, 31)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
-                    .add(jPanel1Layout.createSequentialGroup()
-                        .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jLabel2)
+                    .add(loadTemplate)
+                    .add(topLetCenter)
+                    .add(jLabel1)
                     .add(jPanel1Layout.createSequentialGroup()
                         .add(startRow, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 47, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                         .add(rows, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(jLabel1)
-                    .add(topLetCenter)
-                    .add(loadTemplate)
-                    .add(jLabel5))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .add(jLabel2)
+                    .add(jPanel1Layout.createSequentialGroup()
+                        .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                        .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(new java.awt.Component[] {cols, rows, startCol, startRow}, org.jdesktop.layout.GroupLayout.HORIZONTAL);
@@ -138,12 +135,9 @@ public class MultiWellGui extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel1Layout.createSequentialGroup()
-                .add(5, 5, 5)
-                .add(jLabel5)
-                .add(5, 5, 5)
-                .add(loadTemplate)
-                .add(5, 5, 5)
                 .add(topLetCenter)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(loadTemplate)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
@@ -155,15 +149,11 @@ public class MultiWellGui extends javax.swing.JFrame {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(cols, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(startCol, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
         );
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Find Focal Plane"));
         jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
-
-        jLabel6.setText("Find Focal Plane");
-        jLabel6.setAlignmentX(0.5F);
-        jPanel2.add(jLabel6);
 
         point2Button.setText("Reference Point 2");
         point2Button.setAlignmentX(0.5F);
@@ -176,6 +166,7 @@ public class MultiWellGui extends javax.swing.JFrame {
 
         point3Button.setText("Reference Point 3");
         point3Button.setAlignmentX(0.5F);
+        point3Button.setEnabled(false);
         point3Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 point3ButtonActionPerformed(evt);
@@ -185,12 +176,15 @@ public class MultiWellGui extends javax.swing.JFrame {
 
         focalPlaneButton.setText("Find Focal Plane");
         focalPlaneButton.setAlignmentX(0.5F);
+        focalPlaneButton.setEnabled(false);
         focalPlaneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 focalPlaneButtonActionPerformed(evt);
             }
         });
         jPanel2.add(focalPlaneButton);
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Take Tiled Data"));
 
         jLabel3.setText("Overlap %");
         jLabel3.setAlignmentX(0.5F);
@@ -235,8 +229,6 @@ public class MultiWellGui extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Take Tiled Data");
-
         org.jdesktop.layout.GroupLayout jPanel3Layout = new org.jdesktop.layout.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -245,10 +237,8 @@ public class MultiWellGui extends javax.swing.JFrame {
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
-                            .add(jLabel7)
-                            .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(90, 90, 90))
+                        .add(jLabel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 73, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(103, 103, 103))
                     .add(org.jdesktop.layout.GroupLayout.CENTER, jPanel3Layout.createSequentialGroup()
                         .add(jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                             .add(org.jdesktop.layout.GroupLayout.CENTER, overLapBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -267,8 +257,7 @@ public class MultiWellGui extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(jPanel3Layout.createSequentialGroup()
-                .add(jLabel7)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
+                .add(22, 22, 22)
                 .add(jLabel3)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(overLapBox, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -290,16 +279,13 @@ public class MultiWellGui extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(6, 6, 6)
-                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(31, 31, 31)
-                        .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 123, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                    .add(layout.createSequentialGroup()
-                        .add(31, 31, 31)
-                        .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                .add(0, 39, Short.MAX_VALUE))
+                .add(6, 6, 6)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 123, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(0, 17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -307,49 +293,19 @@ public class MultiWellGui extends javax.swing.JFrame {
                 .add(19, 19, 19)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(jPanel3, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                .add(18, 18, 18)
-                .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .add(layout.createSequentialGroup()
+                        .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                        .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void colsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_colsActionPerformed
-
     private void showListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showListActionPerformed
         controller.showList();
     }//GEN-LAST:event_showListActionPerformed
-
-    private void loadTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadTemplateActionPerformed
-        String str = this.rows.getText();
-        int row = Integer.parseInt(str);
-
-        String str2 = this.cols.getText();
-        int col = Integer.parseInt(str2);
-
-        controller.setInit(row, col, Integer.parseInt(startRow.getText()), Integer.parseInt(startCol.getText()));
-       
-        
-
-        controller.loadTemplate();
-        controller.showList();
-    }//GEN-LAST:event_loadTemplateActionPerformed
-
-    private void topLetCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topLetCenterActionPerformed
-        controller.setFirstBox();
-    }//GEN-LAST:event_topLetCenterActionPerformed
-
-    private void rowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rowsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rowsActionPerformed
-
-    private void startColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startColActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_startColActionPerformed
 
     private void tileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tileButtonActionPerformed
         controller.setOverlap(Integer.parseInt(this.overLapBox.getText()));
@@ -367,10 +323,12 @@ public class MultiWellGui extends javax.swing.JFrame {
 
     private void point2ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_point2ButtonActionPerformed
         controller.setPosition2();
+        this.point3Button.setEnabled(true);
     }//GEN-LAST:event_point2ButtonActionPerformed
 
     private void point3ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_point3ButtonActionPerformed
         controller.setPosition3();
+        this.focalPlaneButton.setEnabled(true);
     }//GEN-LAST:event_point3ButtonActionPerformed
 
     private void rowTileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rowTileActionPerformed
@@ -380,6 +338,36 @@ public class MultiWellGui extends javax.swing.JFrame {
     private void colTileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colTileActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_colTileActionPerformed
+
+    private void startColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startColActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startColActionPerformed
+
+    private void colsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_colsActionPerformed
+
+    private void rowsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rowsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rowsActionPerformed
+
+    private void topLetCenterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topLetCenterActionPerformed
+        controller.setFirstBox();
+        this.loadTemplate.setEnabled(true);
+    }//GEN-LAST:event_topLetCenterActionPerformed
+
+    private void loadTemplateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadTemplateActionPerformed
+        String str = this.rows.getText();
+        int row = Integer.parseInt(str);
+
+        String str2 = this.cols.getText();
+        int col = Integer.parseInt(str2);
+
+        controller.setInit(row, col, Integer.parseInt(startRow.getText()), Integer.parseInt(startCol.getText()));
+
+        controller.loadTemplate();
+        controller.showList();
+    }//GEN-LAST:event_loadTemplateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,9 +411,6 @@ public class MultiWellGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
