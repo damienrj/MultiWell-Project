@@ -55,26 +55,10 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
         WellController controller = new WellController(gui, core);
        
         
-        MultiWellGui test= new MultiWellGui();
-        test.setVisible(true);
-        test.setController(controller);
-        PositionList pl = new PositionList();
-
-        MultiStagePosition msp = new MultiStagePosition(xyStage, 1.0, 1.0, zStage, 100.0);
-        msp.setLabel("Test");
-        msp.setProperty("Slide", "Number 1");
-        pl.addPosition(msp);
-        msp = new MultiStagePosition(xyStage, 4.0, 0.0, zStage, 98.0);
-        msp.setLabel("Next Position");
-        msp.setProperty("Slide", "Number 2");
-        pl.addPosition(msp);
-        try {
-            gui.setPositionList(pl);
-        } catch (MMScriptException ex) {
-            Logger.getLogger(MultiWell.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
+        MultiWellGui guiWindow= new MultiWellGui();
+        guiWindow.setVisible(true);
+        guiWindow.setController(controller);
+        
 
     }
 

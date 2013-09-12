@@ -212,6 +212,7 @@ public class WellController {
             for (int i = 0; i < num; i++) {
                 int count = 0;
                 MultiStagePosition tempPoint = list2.getPosition(i);
+                String oldLabel = tempPoint.getLabel();
                 double xPoint = tempPoint.getX();
                 double yPoint = tempPoint.getY();
                 double zPoint = tempPoint.getZ();
@@ -223,7 +224,7 @@ public class WellController {
                                 xPoint - a * pixSize * imageWidth * (100 - overLapPercent) / 100,
                                 yPoint - b * pixSize * imageHeight * (100 - overLapPercent) / 100,
                                 zStage, zPoint);
-                        msp.setLabel("Box " + Integer.toString(i + 1) + '_' + Integer.toString(count));
+                        msp.setLabel(oldLabel + "_Field_" + Integer.toString(count));
                         tileList.addPosition(msp);
                     }
                 }
