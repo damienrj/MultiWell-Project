@@ -67,6 +67,11 @@ public class WellController {
 
    }
 
+   /**
+    * Sets percent overlap on each side of image for stitching
+    *
+    * @since 1.0
+    */
    public void setOverlap(int x) {
       overLapPercent = x;
    }
@@ -92,6 +97,11 @@ public class WellController {
       gui.showXYPositionList();
    }
 
+   /**
+    * Sets point 2 of 3 to define focal plane
+    *
+    * @since 1.0
+    */
    public void setPosition2() {
 
       try {
@@ -107,6 +117,11 @@ public class WellController {
 
    }
 
+   /**
+    * Sets point 3 of 3 to define focal plane
+    *
+    * @since 1.0
+    */
    public void setPosition3() {
       try {
          x[2] = core.getXPosition(xyStage);
@@ -131,6 +146,11 @@ public class WellController {
       }
    }
 
+   /**
+    * Defines the focal plane and corrects position list z positions
+    *
+    * @since 1.0
+    */
    public void findFocusPlane() {
       plane = new Plane();
       Vector3D cVector3D1 = new Vector3D(x[0] - x[1], y[0] - y[1], z[0] - z[1]);
