@@ -43,6 +43,7 @@ public class WellController {
    private Plane plane;
    private int[] size;
 
+
    public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
       gui = guiIN;
       core = coreIN;
@@ -54,7 +55,7 @@ public class WellController {
       imageHeight = core.getImageHeight();
       imageWidth = core.getImageWidth();
 
-
+      
       //Position 0 is for the first box, 1 the second box, 2 the third box
       x = new double[3];
       y = new double[3];
@@ -162,6 +163,7 @@ public class WellController {
          int num = list.getNumberOfPositions();
 
          for (int i = 0; i < num; i++) {
+
             MultiStagePosition currentPosition = list.getPosition(i);
             double X = currentPosition.getX();
             double Y = currentPosition.getY();
@@ -254,6 +256,7 @@ public class WellController {
 
          for (int i = 0; i < num; i++) {
             int count = 0;
+
             MultiStagePosition tempPoint = list2.getPosition(i);
             String oldLabel = tempPoint.getLabel();
             double xPoint = tempPoint.getX();
@@ -263,6 +266,7 @@ public class WellController {
             for (int a = -(size[1] - 1) / 2; a <= (size[1] - 1) / 2; a++) {
                for (int b = -(size[0] - 1) / 2; b <= (size[0] - 1) / 2; b++) {
                   count++;
+
                   MultiStagePosition msp = new MultiStagePosition(xyStage,
                           xPoint - a * pixSize * imageWidth * (100 - overLapPercent) / 100,
                           yPoint - b * pixSize * imageHeight * (100 - overLapPercent) / 100,
