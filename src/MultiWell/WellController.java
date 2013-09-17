@@ -42,6 +42,7 @@ public class WellController {
    private int overLapPercent;
    private Plane plane;
    private int[] size;
+   private int progress;
 
 
    public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
@@ -134,7 +135,10 @@ public class WellController {
          Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
-
+public Integer getProgress(){
+      return progress;
+   
+}
    public void setSecondBox() {
 
       try {
@@ -163,14 +167,14 @@ public class WellController {
          int num = list.getNumberOfPositions();
 
          for (int i = 0; i < num; i++) {
-
+            progress=Math.round(((i+1)*100)/num);
             MultiStagePosition currentPosition = list.getPosition(i);
             double X = currentPosition.getX();
             double Y = currentPosition.getY();
             double Z = currentPosition.getZ();
-            System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
+            //System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
             Z = plane.computeZCoord(X, Y);
-            System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
+            //System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
 
             MultiStagePosition msp = new MultiStagePosition(xyStage, X, Y, zStage, Z);
             msp.setLabel(currentPosition.getLabel());
