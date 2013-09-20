@@ -1,6 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Creates a grid based on the template file
+ *
+ * @author Damien Ramunno-Johnson
+ *
+ *
+ * @since 1.0
  */
 package MultiWell;
 
@@ -9,10 +13,6 @@ import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author ramunnoj
- */
 public class GridTemplate {
 
    private String csvFile;
@@ -25,6 +25,14 @@ public class GridTemplate {
       csvFile = file;
    }
 
+      /**
+    * Constructor for GridTemplate
+    * 
+    * A file open window appears, asking for the *.csv file which contains the
+    * grid spacing pattern
+    *
+    * @since 1.0
+    */
    public GridTemplate() {
       JFileChooser fileopen = new JFileChooser();
       FileNameExtensionFilter filter = new FileNameExtensionFilter("csv files", "csv");
@@ -38,11 +46,19 @@ public class GridTemplate {
          System.out.println(file);
       }
    }
-
+   /**
+    * Get method for grid
+    *
+    * @since 1.0
+    */
    public ArrayList<String[]> getGrid() {
       return data;
    }
-
+   /**
+    * Loads the csv file containing grid information
+    *
+    * @since 1.0
+    */
    public void loadTemplete() {
 
       try {

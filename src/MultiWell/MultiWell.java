@@ -25,7 +25,7 @@ import org.micromanager.utils.MMScriptException;
 public class MultiWell implements org.micromanager.api.MMPlugin {
 
    public static String menuName = "Multi-Well plugin";
-   public static String tooltipDescription = "A test plugin";
+   public static String tooltipDescription = "A automated data collection plugin";
    private CMMCore core;
    private MMStudioMainFrame gui;
    private AcquisitionEngine acq;
@@ -52,10 +52,11 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
    @Override
    public void show() {
+      //This Section creates the gui
       MultiWellGui guiWindow = new MultiWellGui();
 
 
-      
+      //This section creates the controller, and passes controller to GUI
       WellController controller = new WellController(gui, core);
       guiWindow.setVisible(true);
       guiWindow.setController(controller);
@@ -69,12 +70,12 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
    @Override
    public String getDescription() {
-      return "Description: Hello world";
+      return "Description: This plugin is ment to automate data collection";
    }
 
    @Override
    public String getInfo() {
-      return "Info: Hello world";
+      return "Info: This plugin is ment to automate data collection";
    }
 
    @Override
@@ -84,6 +85,6 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
    @Override
    public String getCopyright() {
-      return "test";
+      return "This software is by Damien Ramunno-Johnson";
    }
 }
