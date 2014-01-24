@@ -267,15 +267,23 @@ public Integer getProgress(){
             double yPoint = tempPoint.getY();
             double zPoint = tempPoint.getZ();
 
-            for (int a = -(size[1] - 1) / 2; a <= (size[1] - 1) / 2; a++) {
-               for (int b = -(size[0] - 1) / 2; b <= (size[0] - 1) / 2; b++) {
+            int flag = -1;
+            
+            int colStart=-(size[1] - 1) / 2;
+            int rowStart=-(size[0] - 1) / 2;
+            for (int col = colStart ; col <= (size[1] - 1) / 2; col++) {
+               flag=-flag;
+               for (int row = rowStart; row <= (size[0] - 1) / 2; row++) {
+                  
+
+                  
                   count++;
 
                   MultiStagePosition msp = new MultiStagePosition(xyStage,
-                          xPoint - a * pixSize * imageWidth * (100 - overLapPercent) / 100,
-                          yPoint - b * pixSize * imageHeight * (100 - overLapPercent) / 100,
+                          xPoint - col * pixSize * imageWidth * (100 - overLapPercent) / 100,
+                          yPoint - row*flag * pixSize * imageHeight * (100 - overLapPercent) / 100,
                           zStage, zPoint);
-                  msp.setLabel(oldLabel + "_Field_" + Integer.toString(count));
+                  msp.setLabel(oldLabel + "_row" + String.format("%03d", -1*((flag*row)+rowStart)+1) + "_col" + String.format("%03d", col-colStart+1) );
                   tileList.addPosition(msp);
                }
             }
