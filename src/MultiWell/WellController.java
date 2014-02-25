@@ -10,9 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import mmcorej.CMMCore;
 import org.micromanager.MMStudioMainFrame;
-import org.micromanager.api.AcquisitionEngine;
-import org.micromanager.navigation.MultiStagePosition;
-import org.micromanager.navigation.PositionList;
+import org.micromanager.api.*;
+//import org.micromanager.api.AcquisitionEngine;
+//import org.micromanager.navigation.MultiStagePosition;
+//import org.micromanager.navigation.PositionList;
 import org.micromanager.utils.MMScriptException;
 
 /**
@@ -23,7 +24,7 @@ public class WellController {
 
    private MMStudioMainFrame gui;
    private CMMCore core;
-   private AcquisitionEngine acq;
+   //private AcquisitionEngine acq;
    private String xyStage;
    private String zStage;
    private double[] x;
@@ -48,7 +49,7 @@ public class WellController {
    public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
       gui = guiIN;
       core = coreIN;
-      acq = gui.getAcquisitionEngine();
+
       xyStage = core.getXYStageDevice();
       zStage = core.getFocusDevice();
 

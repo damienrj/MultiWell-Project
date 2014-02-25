@@ -11,12 +11,10 @@ import javax.swing.JFrame;
 import org.micromanager.api.ScriptInterface;
 import mmcorej.CMMCore;
 import org.micromanager.MMStudioMainFrame;
-import org.micromanager.api.AcquisitionEngine;
+
 import org.micromanager.api.ScriptInterface;
 import org.micromanager.utils.ReportingUtils;
-import org.micromanager.navigation.PositionList;
-import org.micromanager.navigation.MultiStagePosition;
-import org.micromanager.utils.MMScriptException;
+import org.micromanager.api.*;
 
 /**
  *
@@ -28,7 +26,7 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
    public static String tooltipDescription = "A automated data collection plugin";
    private CMMCore core;
    private MMStudioMainFrame gui;
-   private AcquisitionEngine acq;
+   //private AcquisitionEngine acq;
    private String xyStage;
    private String zStage;
 
@@ -45,7 +43,7 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
    public void setApp(ScriptInterface app) {
       gui = (MMStudioMainFrame) app;
       core = app.getMMCore();
-      acq = gui.getAcquisitionEngine();
+      //acq = gui.getAcquisitionEngine();
       xyStage = core.getXYStageDevice();
       zStage = core.getFocusDevice();
    }
@@ -63,10 +61,7 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
 
    }
 
-   @Override
-   public void configurationChanged() {
-      // TODO Auto-generated method stub  
-   }
+
 
    @Override
    public String getDescription() {
