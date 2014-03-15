@@ -1,6 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This Multi-Well plug-in is used to automatically create a position list based
+ * on the template of your well. It then will try to estimate the focal plane
+ * from three well positions. It can also create a list of positions to take a 
+ * tiled set of images.
+ *
+ * @author Damien Ramunno-Johnson
+ *
+ * @version %I% %G%
+ * @since 1.0
  */
 package MultiWell;
 
@@ -26,7 +33,6 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
    public static String tooltipDescription = "A automated data collection plugin";
    private CMMCore core;
    private MMStudioMainFrame gui;
-   //private AcquisitionEngine acq;
    private String xyStage;
    private String zStage;
 
@@ -43,7 +49,6 @@ public class MultiWell implements org.micromanager.api.MMPlugin {
    public void setApp(ScriptInterface app) {
       gui = (MMStudioMainFrame) app;
       core = app.getMMCore();
-      //acq = gui.getAcquisitionEngine();
       xyStage = core.getXYStageDevice();
       zStage = core.getFocusDevice();
    }

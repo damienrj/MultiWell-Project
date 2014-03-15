@@ -1,6 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * This creates the grid object 
+ *
+ *
+ * @author Damien Ramunno-Johnson
+ *
+ * @version %I% %G%
+ * @since 1.0
  */
 package MultiWell;
 
@@ -17,7 +22,7 @@ public class MakeGrid {
    private double angle;
    private double deltaX;
    private double[][][] gridCorner;
-
+//Used to calculate angle of grid
    public void calculateAngle(double x1, double y1, double x2, double y2) {
       r = sqrt(pow(x1 - x2, 2) + pow(y1 - y2, 2));
       deltaY = abs(y1 - y2);

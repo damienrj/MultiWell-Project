@@ -1,30 +1,27 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * The GUI has access to the software via the controller which then implements
+ * or calls the methods
+ *
+ *
+ * @author Damien Ramunno-Johnson
+ * @version %I% %G%
+ *
+ * @since 1.0
  */
 package MultiWell;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mmcorej.CMMCore;
 import org.micromanager.MMStudioMainFrame;
 import org.micromanager.api.*;
-//import org.micromanager.api.AcquisitionEngine;
-//import org.micromanager.navigation.MultiStagePosition;
-//import org.micromanager.navigation.PositionList;
 import org.micromanager.utils.MMScriptException;
 
-/**
- *
- * @author ramunnoj
- */
 public class WellController {
 
    private MMStudioMainFrame gui;
    private CMMCore core;
-   //private AcquisitionEngine acq;
    private String xyStage;
    private String zStage;
    private double[] x;
@@ -45,7 +42,6 @@ public class WellController {
    private int[] size;
    private int progress;
 
-
    public WellController(MMStudioMainFrame guiIN, CMMCore coreIN) {
       gui = guiIN;
       core = coreIN;
@@ -57,7 +53,7 @@ public class WellController {
       imageHeight = core.getImageHeight();
       imageWidth = core.getImageWidth();
 
-      
+
       //Position 0 is for the first box, 1 the second box, 2 the third box
       x = new double[3];
       y = new double[3];
@@ -136,10 +132,12 @@ public class WellController {
          Logger.getLogger(WellController.class.getName()).log(Level.SEVERE, null, ex);
       }
    }
-public Integer getProgress(){
+
+   public Integer getProgress() {
       return progress;
-   
-}
+
+   }
+
    public void setSecondBox() {
 
       try {
@@ -168,14 +166,12 @@ public Integer getProgress(){
          int num = list.getNumberOfPositions();
 
          for (int i = 0; i < num; i++) {
-            progress=Math.round(((i+1)*100)/num);
+            progress = Math.round(((i + 1) * 100) / num);
             MultiStagePosition currentPosition = list.getPosition(i);
             double X = currentPosition.getX();
             double Y = currentPosition.getY();
             double Z = currentPosition.getZ();
-            //System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
             Z = plane.computeZCoord(X, Y);
-            //System.out.println(Double.toString(X) + "   " + Double.toString(Y) + "   " + Double.toString(Z));
 
             MultiStagePosition msp = new MultiStagePosition(xyStage, X, Y, zStage, Z);
             msp.setLabel(currentPosition.getLabel());
@@ -206,7 +202,11 @@ public Integer getProgress(){
       startCol = startc;
 
    }
-
+   /**
+    * Old grid version, not in use. Use loadTemplate
+    *
+    * @since 1.0
+    */
    public void makeGrid() {
       grid = new MakeGrid();
       grid.calculateAngle(x[0], y[0], x[1], y[1]);
@@ -237,6 +237,11 @@ public Integer getProgress(){
 
    }
 
+   /**
+    * A Setter for the tile size
+    *
+    * @since 1.0
+    */
    public void setTileSizes(int r, int c) {
       size = new int[2];
       size[0] = r;
@@ -245,7 +250,8 @@ public Integer getProgress(){
    }
 
    /**
-    * Creates the tiled position list based on current positions
+    * Creates the tiled position list based on current position list. Requires odd
+    * dimension 3 by 5 and so on.
     *
     * @since 1.0
     */
@@ -267,24 +273,24 @@ public Integer getProgress(){
             double xPoint = tempPoint.getX();
             double yPoint = tempPoint.getY();
             double zPoint = tempPoint.getZ();
-
+            //This does a snake scanning pattern
             int flag = -1;
-            
-            int colStart=-(size[1] - 1) / 2;
-            int rowStart=-(size[0] - 1) / 2;
-            for (int col = colStart ; col <= (size[1] - 1) / 2; col++) {
-               flag=-flag;
-               for (int row = rowStart; row <= (size[0] - 1) / 2; row++) {
-                  
 
-                  
+            int colStart = -(size[1] - 1) / 2;
+            int rowStart = -(size[0] - 1) / 2;
+            for (int col = colStart; col <= (size[1] - 1) / 2; col++) {
+               flag = -flag;
+               for (int row = rowStart; row <= (size[0] - 1) / 2; row++) {
+
+
+
                   count++;
 
                   MultiStagePosition msp = new MultiStagePosition(xyStage,
                           xPoint - col * pixSize * imageWidth * (100 - overLapPercent) / 100,
-                          yPoint - row*flag * pixSize * imageHeight * (100 - overLapPercent) / 100,
+                          yPoint - row * flag * pixSize * imageHeight * (100 - overLapPercent) / 100,
                           zStage, zPoint);
-                  msp.setLabel(oldLabel + "_row" + String.format("%03d", -1*((flag*row)+rowStart)+1) + "_col" + String.format("%03d", col-colStart+1) );
+                  msp.setLabel(oldLabel + "_row" + String.format("%03d", -1 * ((flag * row) + rowStart) + 1) + "_col" + String.format("%03d", col - colStart + 1));
                   tileList.addPosition(msp);
                }
             }
@@ -312,6 +318,7 @@ public Integer getProgress(){
       grid.loadTemplete();
       gridCenters = grid.getGrid();
       int r = gridCenters.size();
+      //will load a subset if row < r
       if (row <= r) {
          r = row;
       }
@@ -319,16 +326,17 @@ public Integer getProgress(){
 
       list = new PositionList();
 
-      //for (String[] rowPoints : gridCenters) {
       for (int i = startRow - 1; i < r; i++) {
          String[] rowPoints = gridCenters.get(i);
 
          int c = rowPoints.length - 2;
 
+         //Loads a subset, the 2x is because of the pair of points
          if (2 * col - 2 < c) {
             c = 2 * col - 2;
          }
          for (int a = 2 * startCol - 2; a <= c; a = a + 2) {
+            //Unit Conversion
             double xPoint = 1000 * Double.parseDouble(rowPoints[a]);
             double yPoint = 1000 * Double.parseDouble(rowPoints[a + 1]);
 
