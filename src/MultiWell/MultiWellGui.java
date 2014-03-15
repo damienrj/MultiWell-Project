@@ -33,48 +33,6 @@ public class MultiWellGui extends javax.swing.JFrame {
       
    }
 
-    public void startProgressBar() {
-
-
-       
-        SwingWorker<Integer, Void> worker = new SwingWorker<Integer,Void>() {
-            public Integer doInBackground() {
-               int progressCounter = 0;
-                while (progressCounter < 100) {
-                    //setProgress(progressCounter++);
-                   setProgress(controller.getProgress());
-                   progressCounter=getProgress();
-                   
-                    try { Thread.sleep(100); } catch (InterruptedException e) {}
-                }
-               System.out.println("Done!");
-                return 0;
-
-            }
-            
-                 /*
-         * Executed in event dispatching thread
-         */
-        @Override
-        public void done() {
-           progressBar.setValue(0);
-
-           
-           
-        }  
-            
-        };
-        worker.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent event) {
-                if ("progress".equals(event.getPropertyName())) {
-                    progressBar.setValue((Integer)event.getNewValue());
-                }
-            }
-        });
-        worker.execute();
-        
-        
-    }
 
    /**
     * This method is called from within the constructor to initialize the form.
@@ -98,7 +56,6 @@ public class MultiWellGui extends javax.swing.JFrame {
       point2Button = new javax.swing.JButton();
       point3Button = new javax.swing.JButton();
       focalPlaneButton = new javax.swing.JButton();
-      progressBar = new javax.swing.JProgressBar();
       jPanel3 = new javax.swing.JPanel();
       jLabel3 = new javax.swing.JLabel();
       overLapBox = new javax.swing.JTextField();
@@ -235,7 +192,6 @@ public class MultiWellGui extends javax.swing.JFrame {
          }
       });
       jPanel2.add(focalPlaneButton);
-      jPanel2.add(progressBar);
 
       jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Take Tiled Data", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
@@ -343,7 +299,7 @@ public class MultiWellGui extends javax.swing.JFrame {
                   .add(jPanel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                   .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                   .add(jPanel2, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-            .addContainerGap(19, Short.MAX_VALUE))
+            .addContainerGap(39, Short.MAX_VALUE))
       );
 
       pack();
@@ -364,7 +320,7 @@ public class MultiWellGui extends javax.swing.JFrame {
     }//GEN-LAST:event_overLapBoxActionPerformed
 
     private void focalPlaneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_focalPlaneButtonActionPerformed
-       startProgressBar();
+
        controller.findFocusPlane();
     }//GEN-LAST:event_focalPlaneButtonActionPerformed
 
@@ -465,7 +421,6 @@ public class MultiWellGui extends javax.swing.JFrame {
    private javax.swing.JTextField overLapBox;
    private javax.swing.JButton point2Button;
    private javax.swing.JButton point3Button;
-   private javax.swing.JProgressBar progressBar;
    private javax.swing.JTextField rowTile;
    private javax.swing.JTextField rows;
    private javax.swing.JButton showList;
