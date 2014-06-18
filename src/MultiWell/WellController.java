@@ -290,7 +290,7 @@ public class WellController {
                           xPoint - col * pixSize * imageWidth * (100 - overLapPercent) / 100,
                           yPoint - row * flag * pixSize * imageHeight * (100 - overLapPercent) / 100,
                           zStage, zPoint);
-                  msp.setLabel(oldLabel + "_row" + String.format("%03d", -1 * ((flag * row) + rowStart) + 1) + "_col" + String.format("%03d", col - colStart + 1));
+                  msp.setLabel(oldLabel + "_r" + String.format("%02d", -1 * ((flag * row) + rowStart) + 1) + "c" + String.format("%02d", col - colStart + 1));
                   tileList.addPosition(msp);
                }
             }
@@ -325,7 +325,7 @@ public class WellController {
 
 
       list = new PositionList();
-
+      int well = 0;
       for (int i = startRow - 1; i < r; i++) {
          String[] rowPoints = gridCenters.get(i);
 
@@ -336,12 +336,14 @@ public class WellController {
             c = 2 * col - 2;
          }
          for (int a = 2 * startCol - 2; a <= c; a = a + 2) {
+            well++;
+            System.out.println(well);
             //Unit Conversion
             double xPoint = 1000 * Double.parseDouble(rowPoints[a]);
             double yPoint = 1000 * Double.parseDouble(rowPoints[a + 1]);
 
             MultiStagePosition msp = new MultiStagePosition(xyStage, x[0] - xPoint, yPoint + y[0], zStage, z[0]);
-            msp.setLabel("Col " + Integer.toString((a + 2) / 2) + " Row " + Integer.toString(i + 1));
+            msp.setLabel("W"+ String.format("%02d", well) + "_R" + Integer.toString(i + 1)+ "C" + Integer.toString((a + 2) / 2));
 
 
             list.addPosition(msp);
