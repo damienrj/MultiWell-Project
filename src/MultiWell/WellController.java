@@ -274,25 +274,38 @@ public class WellController {
             double yPoint = tempPoint.getY();
             double zPoint = tempPoint.getZ();
             //This does a snake scanning pattern
-            int flag = -1;
+            int flag = 1;
+            int colNum=0;
+            int rowNum=1;
+            double colStart = -(size[1] - 1) / 2.0;
+            double rowStart = -(size[0] - 1) / 2.0;
+            for (double col = colStart; col <= (size[1] - 1) / 2.0; col++) {
+               
+               colNum++;
+               if (rowNum >1){
+                  rowNum--;
+               }else if(rowNum==0){
+               rowNum=1;
+            }
+               for (double row = rowStart; row <= (size[0] - 1) / 2.0; row++) {
 
-            int colStart = -(size[1] - 1) / 2;
-            int rowStart = -(size[0] - 1) / 2;
-            for (int col = colStart; col <= (size[1] - 1) / 2; col++) {
-               flag = -flag;
-               for (int row = rowStart; row <= (size[0] - 1) / 2; row++) {
-
-
-
+                  
+                 
                   count++;
 
                   MultiStagePosition msp = new MultiStagePosition(xyStage,
                           xPoint - col * pixSize * imageWidth * (100 - overLapPercent) / 100,
                           yPoint - row * flag * pixSize * imageHeight * (100 - overLapPercent) / 100,
                           zStage, zPoint);
-                  msp.setLabel(oldLabel + "_r" + String.format("%02d", -1 * ((flag * row) + rowStart) + 1) + "c" + String.format("%02d", col - colStart + 1));
+                  msp.setLabel(oldLabel + "_r" + String.format("%02d", rowNum) + "c" + String.format("%02d", colNum));
                   tileList.addPosition(msp);
+                                    if(flag >0){
+                     rowNum++;
+                  }else{
+                     rowNum--;
+                  }
                }
+               flag = -flag;
             }
 
 
